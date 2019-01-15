@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recoil Compensated Rotor Cannon", "Recoil Compensated Rotor Cannon\Recoil Compensated Rotor Cannon.csproj", "{1022ED56-2E95-412E-AB4C-86B88347EC70}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1022ED56-2E95-412E-AB4C-86B88347EC70}.Debug|x64.ActiveCfg = Debug|x64
+		{1022ED56-2E95-412E-AB4C-86B88347EC70}.Debug|x64.Build.0 = Debug|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3041BF9D-3A94-408B-AD06-8F87BFE356BF}
+	EndGlobalSection
+EndGlobal
