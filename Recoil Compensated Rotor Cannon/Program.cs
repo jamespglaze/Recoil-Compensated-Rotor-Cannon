@@ -36,7 +36,6 @@ namespace IngameScript
         public void Main(string argument)
         {
             int index = 0;
-
             string[] temp = Me.CustomData.TrimEnd('\n').Split(',', '\n');
             GridTerminalSystem.GetBlockGroups(abrazors, abrazor => abrazor.Name.Contains(abrazorgrouptag));
             foreach (IMyBlockGroup abrazor in abrazors)
@@ -63,9 +62,9 @@ namespace IngameScript
                     abrazor.GetBlocksOfType(endDrivers, endDriver => endDriver.CustomName.Contains("Rotor End"));
                     foreach (IMyMotorStator endDriver in endDrivers)
                     {
-                        for(int i = 0; i < temp.Length/2; i++)
+                        for (int i = 0; i < temp.Length / 2; i++)
                         {
-                            if (temp[i*2 + 1] == endDriver.CustomName.Substring(0, 4))
+                            if (temp[i * 2 + 1] == endDriver.CustomName.Substring(0, 4))
                             {
                                 if (temp[i * 2] == "run")
                                     cannonActive[index] = true;
@@ -91,11 +90,13 @@ namespace IngameScript
                 index = index + 1;
             }
         }
+
         public void CycleCannon(List<IMyMotorAdvancedStator> cannonDrivers, List<IMyMotorStator> endDrivers, List<IMyCargoContainer> recoilContainers, int step, bool cannonActive, int massAmount)
         {
             switch (step)
             {
                 case 0:
+
                     foreach (IMyMotorAdvancedStator cannonDriver in cannonDrivers)
                         cannonDriver.SetValue<float>("Displacement", -0.4f);
 
@@ -104,19 +105,16 @@ namespace IngameScript
 
                     recoilDampers.Find(cargo => cargo.CustomName.Contains("Base")).GetInventory().TransferItemFrom(recoilDampers.Find(cargo => cargo.CustomName.Contains("End")).GetInventory(), 0, 0);
                     break;
-
                 case 1:
                     if (cannonActive)
                     {
                         foreach (IMyMotorAdvancedStator cannonDriver in cannonDrivers)
-                            cannonDriver.SetValue<float>("Displacement", 0f);
+                            cannonDriver.Displacement = 0f;
                         foreach (IMyMotorStator endDriver in endDrivers)
-                            endDriver.ApplyAction("Add Top Part");
-
+                            endDriver.ApplyAction("AddRotorTopPart");
                         recoilDampers.Find(cargo => cargo.CustomName.Contains("End")).GetInventory().TransferItemFrom(recoilDampers.Find(cargo => cargo.CustomName.Contains("Base")).GetInventory(), 0, 0, true, massAmount);
                     }
                     break;
-
                 default:
                     break;
             }
