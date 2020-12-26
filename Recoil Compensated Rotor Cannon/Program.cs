@@ -96,9 +96,8 @@ namespace IngameScript
             switch (step)
             {
                 case 0:
-
                     foreach (IMyMotorAdvancedStator cannonDriver in cannonDrivers)
-                        cannonDriver.SetValue<float>("Displacement", -0.4f);
+                        cannonDriver.Displacement = -0.4f;
 
                     foreach (IMyMotorStator endDriver in endDrivers)
                         endDriver.ApplyAction("Detach");
@@ -110,8 +109,10 @@ namespace IngameScript
                     {
                         foreach (IMyMotorAdvancedStator cannonDriver in cannonDrivers)
                             cannonDriver.Displacement = 0f;
+
                         foreach (IMyMotorStator endDriver in endDrivers)
                             endDriver.ApplyAction("AddRotorTopPart");
+
                         recoilDampers.Find(cargo => cargo.CustomName.Contains("End")).GetInventory().TransferItemFrom(recoilDampers.Find(cargo => cargo.CustomName.Contains("Base")).GetInventory(), 0, 0, true, massAmount);
                     }
                     break;
